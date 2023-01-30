@@ -16,3 +16,7 @@ body {
 main{
   min-height: 90vh;
 }
+
+.amount{
+  font-weight: bold;
+}
