@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import {
   Row,
@@ -9,12 +9,24 @@ import {
   ListGroupItem,
   Button,
 } from "react-bootstrap";
-import products from "../products";
+// import products from "../products";
 import Rating from "../components/Rating";
+import axios from "axios";
 
 const ProductPage = ({ match }) => {
-  const product = products.find((product) => product._id === match.params.id);
-  console.log(product);
+  const [product, setProduct] = useState({});
+  // const product = products.find((product) => product._id === match.params.id);
+  const productID = match.params.id
+  // console.log(productID)
+  useEffect(() => {
+    const fetchProduct = async () => {
+      const {data} = await axios.get(`/api/products/${productID}`);
+      // console.log(data)
+      setProduct(data)
+    }
+    fetchProduct();
+  },[])
+
   return (
     <>
       <Link className="btn btn-dark my-3" to="/" title="Click to go back">

@@ -1,0 +1,22 @@
+{
+  "name": "shoppers",
+  "version": "1.0.0",
+  "description": "This is an E-com website using MERN stack",
+  "main": "server.js",
+  "scripts": {
+    "start": "node backend/server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ProCodeRed/Shopper.git"
+  },
+  "author": "Vipin Yadav",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ProCodeRed/Shopper/issues"
+  },
+  "homepage": "https://github.com/ProCodeRed/Shopper#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
