@@ -5,7 +5,9 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "start": "nodemon backend/server"
+    "start": "nodemon backend/server",
+    "data:import": "node backend/seeder",
+    "data:delete": "node backend/seeder -d"
   },
   "repository": {
     "type": "git",
@@ -18,6 +20,7 @@
   },
   "homepage": "https://github.com/ProCodeRed/Shopper#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "mongoose": "^6.9.0"
