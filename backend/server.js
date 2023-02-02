@@ -1,7 +1,7 @@
 import express from 'express'
 import dotenv from 'dotenv'
-import products from './data/products.js'
 import connectDB from './db/config/db.js';
+import productRouter from './routes/productRoutes.js';
 
 dotenv.config();
 connectDB();
@@ -13,13 +13,9 @@ app.get('/', (req, res) => {
     res.send('Api is running...')
 })
 
-app.get('/api/products', (req, res) => {
-    res.json(products)
-})
+// to get all products
+app.use('/api/products', productRouter)
 
-app.get('/api/products/:id', (req, res) => {
-    const product = products.find(product => product._id === req.params.id)
-    res.json(product)
-})
+
 
 app.listen(PORT, console.log(`The server is running on ${PORT} at ${MODE} mode`))
