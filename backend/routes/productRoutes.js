@@ -9,6 +9,7 @@ const router = express.Router();
 // @access: PUBLIC
 router.get('/', asyncHandler(async (req, res) => {
     const products =  await Product.find({})
+    // throw new Error('Not found !')
     res.json(products)
 }))
 

@@ -20,3 +20,23 @@ main{
 .amount{
   font-weight: bold;
 }
+
+.loader{
+  width: 100%;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loader-text{
+  font-weight: 600;
+  text-align: center;
+  font-size: 32px;
+}
+
+.spinner-border{
+  width: 100px !important;
+  height: 100px !important;
+  margin-right: 32px;
+}
