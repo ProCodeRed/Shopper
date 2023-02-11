@@ -16,7 +16,7 @@ import Loader from "../components/Loader.js";
 import Message from "../components/Message.js";
 
 const ProductPage = ({ history, match }) => {
-  const [qty, setQty] = useState(0)
+  const [qty, setQty] = useState(1)
 
   const dispatch = useDispatch();
   const productDetails = useSelector((state) => state.productDetails);
@@ -93,7 +93,7 @@ const ProductPage = ({ history, match }) => {
               )}
               <ListGroupItem>
                 <Button
-                  className="btn-block"
+                  className="btn-block w-100"
                   disabled={product.countInStock === 0}
                   onClick={addToCartHandler}
                 >

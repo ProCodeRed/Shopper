@@ -40,3 +40,11 @@ main{
   height: 100px !important;
   margin-right: 32px;
 }
+
+.text-bold{
+  font-weight: 700;
+}
+
+.font-18{
+  font-size: 18px;
+}
