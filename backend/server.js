@@ -1,7 +1,8 @@
 import express from 'express'
 import dotenv from 'dotenv'
 import connectDB from './db/config/db.js';
-import productRouter from './routes/productRoutes.js';
+import productRoutes from './routes/productRoutes.js';
+import userRoutes from './routes/userRoutes.js'
 import { errorHandler, notFound } from './middleware/errorMiddleware.js';
 
 dotenv.config();
@@ -15,13 +16,16 @@ app.get('/', (req, res) => {
 })
 
 // to get all products
-app.use('/api/products', productRouter)
+app.use('/api/products', productRoutes)
+app.use('/api/users', userRoutes)
 
 // 404 not found 
 app.use(notFound)
 
 // custom error middleware
 app.use(errorHandler)
+
+app.use(express.json())
 
 
 
