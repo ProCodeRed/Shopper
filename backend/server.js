@@ -10,6 +10,7 @@ connectDB();
 const app = express();
 const PORT = process.env.PORT
 const MODE = process.env.NODE_ENV
+app.use(express.json())
 
 app.get('/', (req, res) => {
     res.send('Api is running...')
@@ -25,7 +26,7 @@ app.use(notFound)
 // custom error middleware
 app.use(errorHandler)
 
-app.use(express.json())
+
 
 
 
