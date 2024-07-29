@@ -8,13 +8,18 @@ const users = [
       isAdmin: true,
     },
     {
-      name: 'Bhavika',
-      email: 'bhavika@example.com',
+      name: 'vipin Yadav',
+      email: 'vipin@gmail.com',
       password: brcypt.hashSync('123456', 10),
     },
     {
-      name: 'Suraj',
-      email: 'suraj@example.com',
+      name: 'Prashali Gangwar',
+      email: 'prashali@gnail.com',
+      password: brcypt.hashSync('123456', 10),
+    },
+    {
+      name: 'Nitin Yadav',
+      email: 'nitin@gnail.com',
       password: brcypt.hashSync('123456', 10),
     },
   ]
