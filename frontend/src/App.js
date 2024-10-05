@@ -5,6 +5,7 @@ import Header from "./components/Header";
 import Homepage from "./pages/Homepage";
 import ProductPage from "./pages/ProductPage";
 import CartPage from "./pages/CartPage";
+import LoginPage from "./pages/LoginPage";
 
 function App() {
   return (
@@ -12,9 +13,10 @@ function App() {
       <Header />
       <Container>
         <main className="py-3">
-            <Route path="/" exact component={Homepage} />
+            <Route path="/login" component={LoginPage} />
             <Route path="/product/:id" component={ProductPage} />
             <Route path="/cart/:id?" component={CartPage} />
+            <Route path="/" exact component={Homepage} />
         </main>
       </Container>
       <Footer />
