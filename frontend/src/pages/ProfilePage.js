@@ -9,7 +9,7 @@ import {
   Form,
 } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { getUserDetails } from "../actions/userAction";
+import { getUserDetails, updateUserProfile } from "../actions/userAction";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
 
@@ -27,6 +27,9 @@ const ProfilePage = ({ history }) => {
 
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
+
+  const userProfileUpdate = useSelector((state) => state.userProfileUpdate);
+  const { success } = userProfileUpdate;
 
   useEffect(() => {
     if (!userInfo) {
@@ -46,7 +49,7 @@ const ProfilePage = ({ history }) => {
     if (password !== confirmedPassword) {
       setMessage("Password do not match !");
     } else {
-      // dispatch update profile
+      dispatch(updateUserProfile({ id: user.id, name, email, password }))
     }
   };
 
@@ -57,6 +60,7 @@ const ProfilePage = ({ history }) => {
           <h2>User Profile</h2>
           {message && <Message variant={"danger"}>{message}</Message>}
           {error && <Message variant={"danger"}>{error}</Message>}
+          {success && <Message variant={"success"}>Profile has been updated !</Message>}
           {loading && <Loader />}
           <Form onSubmit={submitHandler} className="mb-3">
             <FormGroup controlId="name" className="mb-3">
