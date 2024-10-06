@@ -16,8 +16,6 @@ const ShippinPage = ({history}) => {
 
     const dispatch = useDispatch()
 
-    console.log(shippingAddress)
-
     const submitHandler = (e) => {
         e.preventDefault()
         dispatch(saveShippingAddress({address, city, postalCode, country}))
