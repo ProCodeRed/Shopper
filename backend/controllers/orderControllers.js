@@ -6,7 +6,6 @@ import Order from "../db/models/orderModel.js";
 // @route: POST /api/order
 // @access: PRIVATE
 
-
 export const addOrderItems = asyncHandler(async (req, res) => {
     const {orderItems, paymentMethod, shippingAddress, itemsPrice, shippingPrice, taxPrice, totalPrice} = req.body
     
@@ -31,5 +30,22 @@ export const addOrderItems = asyncHandler(async (req, res) => {
 
         const createdOrder = await order.save()
         res.status(201).json(createdOrder)
+    }
+})
+
+
+// @desc: get order by id
+// @route: GET /api/order:id
+// @access: PRIVATE
+
+export const getOrderById = asyncHandler(async (req, res) => {
+    const order = await Order.findById(req.params.id).populate("user", "email");
+
+    if(order){
+        res.json(order)
+    }else{
+        res.status(404)
+        throw new Error("No Order not Found");
+        
     }
 })
