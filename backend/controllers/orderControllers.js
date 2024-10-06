@@ -10,7 +10,7 @@ import Order from "../db/models/orderModel.js";
 export const addOrderItems = asyncHandler(async (req, res) => {
     const {orderItems, paymentMethod, shippingAddress, itemsPrice, shippingPrice, taxPrice, totalPrice} = req.body
     
-    if(cartItems && cartItems.length === 0){
+    if(orderItems && orderItems.length === 0){
         res.status(400)
         throw new Error("No order items");
         return

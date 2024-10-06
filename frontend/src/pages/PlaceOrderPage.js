@@ -4,8 +4,10 @@ import { Button, Row, Col, ListGroup, Image, Card } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
 import CheckoutSteps from '../components/CheckoutSteps'
+import { createOrder } from '../actions/orderAction'
 
-const PlaceOrderPage = () => {
+const PlaceOrderPage = ({history}) => {
+    const dispatch = useDispatch()
 
     const cart = useSelector(state => state.cart)
     let {paymentMethod, cartItems, shippingAddress, itemsPrice, shippingPrice, taxPrice, totalPrice} = cart
@@ -28,10 +30,31 @@ const PlaceOrderPage = () => {
         Number(taxPrice)
     ).toFixed(2)
 
+    const orderCreate = useSelector(state =>  state.orderCreate)
+    const {order, success, error} = orderCreate
+
+    useEffect(() => {
+      if(success){
+       console.log( history.push(`/order/${order._id}`))
+      }
+
+    },[history, success])
+
 
     const placeOrderHandler = () => {
-        console.log("place order")
+      console.log("cartItems", cartItems)
+        dispatch(createOrder({
+          orderItems: cartItems,
+          paymentMethod,
+          shippingAddress, 
+          itemsPrice, 
+          shippingPrice, 
+          taxPrice, 
+          totalPrice
+        }))
     }
+
+    // console.log("cartItems", cartItems)
 
     return (
         <>
@@ -116,9 +139,9 @@ const PlaceOrderPage = () => {
                     <Col>${totalPrice}</Col>
                   </Row>
                 </ListGroup.Item >
-                {/* <ListGroup.Item className='py-3'>
+                <ListGroup.Item className='py-3'>
                   {error && <Message variant='danger'>{error}</Message>}
-                </ListGroup.Item> */}
+                </ListGroup.Item>
                 <ListGroup.Item className='py-3'>
                   <Button
                     type='button'
