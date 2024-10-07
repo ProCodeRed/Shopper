@@ -17,6 +17,11 @@ app.get('/', (req, res) => {
     res.send('Api is running...')
 })
 
+// for paypal
+app.get('/api/config/paypal', (req, res) => {
+    res.send(process.env.PAYPAL_CLIENT_ID)
+})
+
 // to get all products
 app.use('/api/products', productRoutes)
 app.use('/api/users', userRoutes)
