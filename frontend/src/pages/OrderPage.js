@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { Button, Row, Col, ListGroup, Image, Card } from 'react-bootstrap'
+import { Row, Col, ListGroup, Image, Card } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
 import Loader from "../components/Loader.js";
@@ -18,7 +18,7 @@ const OrderPage = ({match}) => {
 
     useEffect(() => {
       dispatch(getOrderDetails(orderId))
-    },[])
+    },[orderId, dispatch])
 
     const addDecimals = (num) => {
         return (Math.round(num * 100) / 100).toFixed(2)
