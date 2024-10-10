@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getUserDetails, updateUserProfile } from "../actions/userAction";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
+import { getUsersAllOrders } from "../actions/orderAction";
 
 const ProfilePage = ({ history }) => {
   const [name, setName] = useState("");
@@ -31,12 +32,17 @@ const ProfilePage = ({ history }) => {
   const userProfileUpdate = useSelector((state) => state.userProfileUpdate);
   const { success } = userProfileUpdate;
 
+
+  const usersOrderList = useSelector(state => state.usersOrderList)
+  const {loading: loadingAllOrders, error: errorAllOrders, userOrders} = usersOrderList;
+
   useEffect(() => {
     if (!userInfo) {
       history.push('/login')
     } else {
       if (!user || !user.name ) {
         dispatch(getUserDetails('profile'))
+        dispatch(getUsersAllOrders())
       } else {
         setName(user.name)
         setEmail(user.email)
@@ -53,6 +59,7 @@ const ProfilePage = ({ history }) => {
     }
   };
 
+  console.log("all orders", userOrders)
   return (
     <>
       <Row>
